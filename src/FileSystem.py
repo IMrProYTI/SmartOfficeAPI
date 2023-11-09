@@ -37,15 +37,6 @@ class FileSystem():
 		self.__increment += 1
 		return self.__increment
 
-	def writeQuestionnaireSync(self, data: Questionnaire):
-		with open(f'data/questionnaires/{data.email}.json', 'w') as f:
-			f.writelines(json.dumps({
-				"fullName": data.fullName,
-				"company": data.company,
-				"phone": data.phone,
-				"email": data.email
-			}))
-
 	def writeAccountSync(self, data: Registration):
 		with open(f'data/accounts/{data.email}.json', 'w') as f:
 			f.writelines(json.dumps({
@@ -63,3 +54,12 @@ class FileSystem():
 				return json.loads(*f.readlines())
 		except:
 			return {}
+
+	def writeQuestionnaireSync(self, data: Questionnaire):
+		with open(f'data/questionnaires/{data.email}.json', 'w') as f:
+			f.writelines(json.dumps({
+				"fullName": data.fullName,
+				"company": data.company,
+				"phone": data.phone,
+				"email": data.email
+			}))
